@@ -1,6 +1,3 @@
-/* simulatorMain.cpp */
-/* Author:  Marty Kraimer Date:    17MAR2000 */
-
 #include <stddef.h>
 #include <stdlib.h>
 #include <stddef.h>
