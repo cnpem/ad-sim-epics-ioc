@@ -9,6 +9,6 @@ services:
         org.opencontainers.image.source: https://github.com/cnpem/ad-sim-epics-ioc
       args:
         REPONAME: ad-sim-epics-ioc
-        RUNTIME_PACKAGES: libxml2
+        RUNTIME_PACKAGES: libxml2 libtiff5
         RUNDIR: /opt/ad-sim-epics-ioc/iocBoot/iocsimulator
         ENTRYPOINT: ./run.sh

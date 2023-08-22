@@ -66,6 +66,12 @@ dbLoadRecords("NDStats.template", "P=$(PREFIX), R=Stats3:, PORT=STATS3, ADDR=0, 
 NDTimeSeriesConfigure("STATS3_TS", $(QSIZE), 0, "STATS3", 1, 23, 0, 0, 0, 0)
 dbLoadRecords("$(ADCORE)/db/NDTimeSeries.template", "P=$(PREFIX), R=TS:3:, PORT=STATS2_TS, ADDR=0, TIMEOUT=1, NDARRAY_PORT=STATS3, NDARRAY_ADDR=1, NCHANS=$(NCHANS=2048), ENABLED=1")
 
+# Create a processing plugin
+NDProcessConfigure("PROC1", $(QSIZE), 0, "$(PORT)", 0, 0, 0)
+dbLoadRecords("NDProcess.template", "P=$(PREFIX), R=Proc1:, PORT=PROC1, ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT)")
+NDFileTIFFConfigure("PROC1TIFF", $(QSIZE), 0, "$(PORT)", 0)
+dbLoadRecords("NDFileTIFF.template", "P=$(PREFIX), R=Proc1:TIFF:, PORT=PROC1TIFF, ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT)")
+
 # Create a transform plugin
 NDTransformConfigure("TRANSF1", $(QSIZE), 0, "$(PORT)", 0, 0, 0, 0, 0, $(MAX_THREADS=4))
 dbLoadRecords("$(ADCORE)/db/NDTransform.template", "P=$(PREFIX), R=Trans1:, PORT=TRANSF1, ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT)")
@@ -73,6 +79,10 @@ dbLoadRecords("$(ADCORE)/db/NDTransform.template", "P=$(PREFIX), R=Trans1:, PORT
 # Configure HDF5 file format plugin
 NDFileHDF5Configure("FileHDF1", $(QSIZE_HDF5), 0, "$(PORT)", 0)
 dbLoadRecords("NDFileHDF5.template", "P=$(PREFIX), R=HDF1:, PORT=FileHDF1, ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT)")
+
+# Create TIFF file format plugin
+NDFileTIFFConfigure("TIFF1", $(QSIZE), 0, "$(PORT)", 0)
+dbLoadRecords("NDFileTIFF.template", "P=$(PREFIX), R=TIFF1:, PORT=TIFF1, ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT)")
 
 # Create color conversion plugin
 NDColorConvertConfigure("CC1", $(QSIZE), 0, "$(PORT)", 0, 0, 0, 0, 0, $(MAX_THREADS=4))
