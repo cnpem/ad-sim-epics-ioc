@@ -10,6 +10,9 @@ simulator_DBD += base.dbd
 simulator_LIBS += simDetector
 simulator_DBD += simDetectorSupport.dbd
 
+simulator_LIBS += NDPluginSSCPimega
+simulator_DBD += NDPluginSSCPimega.dbd
+
 simulator_SRCS += simulator_registerRecordDeviceDriver.cpp
 
 simulator_SRCS_DEFAULT += simulatorMain.cpp

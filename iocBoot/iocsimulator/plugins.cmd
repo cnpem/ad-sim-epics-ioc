@@ -87,3 +87,7 @@ dbLoadRecords("NDFileTIFF.template", "P=$(PREFIX), R=TIFF1:, PORT=TIFF1, ADDR=0,
 # Create color conversion plugin
 NDColorConvertConfigure("CC1", $(QSIZE), 0, "$(PORT)", 0, 0, 0, 0, 0, $(MAX_THREADS=4))
 dbLoadRecords("NDColorConvert.template", "P=$(PREFIX), R=CC1:, PORT=CC1, ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT)")
+
+# Configure NDSSCPimega for geometric restauration
+NDSSCPimegaConfigure("SSCPimega1", "$(QSIZE)", 0, "$(PORT)", 0, 0, 0)
+dbLoadRecords("$(NDSSCPIMEGA)/db/NDSSCPimega.template", "P=$(PREFIX), R=SSCPimega1:, PORT=SSCPimega1, ADDR=0, TIMEOUT=1, NDARRAY_PORT=$(PORT)")
