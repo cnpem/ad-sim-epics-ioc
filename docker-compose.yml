@@ -11,4 +11,3 @@ services:
         REPONAME: ad-sim-epics-ioc
         RUNTIME_PACKAGES: libxml2 libtiff5
         RUNDIR: /opt/ad-sim-epics-ioc/iocBoot/iocsimulator
-        ENTRYPOINT: ./run.sh
