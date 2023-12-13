@@ -1,4 +1,7 @@
-#!../../bin/linux-x86_64/simulator
+#!/opt/ad-sim-epics-ioc/bin/linux-x86_64/simulator
+# -*- container-image: ghcr.io/cnpem/ad-sim-epics-ioc
+
+cd /opt/ad-sim-epics-ioc/iocBoot/iocsimulator
 
 < envPaths
 
