@@ -13,7 +13,7 @@ simulator_registerRecordDeviceDriver(pdbbase)
 epicsEnvSet("PREFIX", "SIM:")
 epicsEnvSet("MAX_IMAGE_WIDTH", 1024)
 epicsEnvSet("MAX_IMAGE_HEIGHT", 1024)
-epicsEnvSet("MAX_IMAGE_PIXELS", 1232896)
+epicsEnvSet("MAX_IMAGE_PIXELS", 3145728)
 
 # Define simulator driver port
 epicsEnvSet("PORT", "SIM")
