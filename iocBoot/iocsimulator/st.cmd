@@ -10,7 +10,7 @@ dbLoadDatabase "../../dbd/simulator.dbd"
 simulator_registerRecordDeviceDriver(pdbbase) 
 
 # IOC and device specific configuration
-epicsEnvSet("PREFIX", "SIM:")
+epicsEnvSet("PREFIX", "$(PREFIX=SIM:)")
 epicsEnvSet("MAX_IMAGE_WIDTH", 1024)
 epicsEnvSet("MAX_IMAGE_HEIGHT", 1024)
 epicsEnvSet("MAX_IMAGE_PIXELS", 3145728)
