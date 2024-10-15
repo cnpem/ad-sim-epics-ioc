@@ -15,6 +15,14 @@ simulator_SRCS += simulator_registerRecordDeviceDriver.cpp
 simulator_SRCS_DEFAULT += simulatorMain.cpp
 simulator_SRCS_vxWorks += -nil-
 
+# Link QSRV (pvAccess Server) if available
+ifdef EPICS_QSRV_MAJOR_VERSION
+    simulator_LIBS += qsrv
+    simulator_LIBS += $(EPICS_BASE_PVA_CORE_LIBS)
+    simulator_DBD += PVAServerRegister.dbd
+    simulator_DBD += qsrv.dbd
+endif
+
 simulator_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 # Load driver dependencies for common areaDetector plugins usage
